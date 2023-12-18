@@ -1,0 +1,72 @@
+Verdict of implemented and already implemented functions in the project.
+
+Each function will have vulnerabilities and mitigation if that is the case.
+!!!!!!!!!!!!!!!!!!!!WRITE THE CASE FOR EACH FUNCTION!!!!!!!!!!!!!!!!!!!!!!!
+
+
+1. query_db_login
+    vulnerabilities:
+                    i. Could be subject to SQL injection if connection 
+                       not handled properly and input not sanitized.
+    mitigation: 
+                    i. Use prepared statements to prevent SQL injection.
+                    ii. Validate and sanitize input parameters before using them in query.
+                    iii. Hash the password before querying (recommended something stronger than md5).
+
+2. get_message_rows
+    vulnerabilities: 
+                    i. In the same manner as the previous function there is a subsceptibility
+                       to SQL injection.
+    mitigation: 
+                    i. Use prepared statements to prevent SQL injection.
+                    ii. Validate and sanitize input parameters before using them in query.
+
+3. add_message_for_user
+    vulnerabilities: 
+                    i. In the same manner as the previous function there is a subsceptibility
+                        to SQL injection.
+    mitigation: 
+                    i. Use prepared statements to prevent SQL injection.
+                    ii. Validate and sanitize input parameters before using them in query.
+
+4. is_valid_image
+    vulnerabilities: 
+                    i. Would the path of the image not be verified it could turn out to be quite
+                       problematic. Do not leave it to be whatever type of file or path.
+    mitigation: 
+                    i. Implement validation mechanism to make sure the file is indeed an image
+                    ii. If possible check also for metadata perhaps there is some information there
+                       that could present issues.
+
+
+5. add_photo_path_to_user
+    vulnerabilities: 
+                    i. Interaction with db -> SQL injection 
+    mitigation: 
+                    i. Use prepared statements to prevent SQL injection.
+                    ii. Validate and sanitize input parameters before using them in the query.
+
+6. get_photo_path_for_user
+    vulnerabilities: 
+                    i. Interaction with db -> SQL injection 
+    mitigation: 
+                    i. Use prepared statements to prevent SQL injection.
+                    ii. Validate and sanitize input parameters before using them in the query.
+
+7. get_memo_content_for_user
+    vulnerabilities: 
+                    i. Not checking if the memo file exists could lead to directory traversal.
+    mitigation: 
+                    i. Validate user input and ensure the requested memo file is within the allowed directory.
+                    ii. Use proper file existence checks before attempting to read the file.
+
+
+8. get_language_php
+    vulnerabilities: 
+                    i. The function concatenates user input directly into a file path, making it susceptible
+                       to directory traversal attacks.
+    mitigation: 
+                    i. Validate user input to ensure it is a valid language code.
+                    ii. Use a whitelist approach to allow only specific language codes.
+                    iii. Ensure that the concatenated file path is safe from directory traversal attacks.
+
